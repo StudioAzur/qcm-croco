@@ -1,15 +1,4 @@
-const myQuestions = [
-    {
-        question: "Comment reconnaît-on un crocodile d'un aligator ? ",
-        answers: [
-            "grâce à leurs yeux",
-            "grâce à la forme de leur mâchoire et de leur crâne",
-            "grâce à la couleur de leurs écailles",
-            "grâce à leurs pattes"
-        ],
-        correctAnswer: "grâce à la forme de leur mâchoire et de leur crâne",
-    },
-];
+import { myQuestions } from "./questions.js";
 
 const buildQcm = () => {
     myQuestions.forEach((element) => {
@@ -19,7 +8,7 @@ const buildQcm = () => {
         console.log(element.answers);
         let answers = element.answers;
         for (const iterator of element.answers) {
-            response.innerHTML += `<p>${iterator}</p>`;
+            response.innerHTML += `<p class="answer">${iterator}</p>`;
         }
     });
 };
