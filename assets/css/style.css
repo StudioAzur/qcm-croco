@@ -1,0 +1,28 @@
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+#response{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 40em;
+    row-gap: 1.5em;
+    align-items: center;
+}
+
+.validate{
+    padding: 0.5em;
+    background-color: green;
+    color: antiquewhite;
+}
+
+#qcm{
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5em;
+}
