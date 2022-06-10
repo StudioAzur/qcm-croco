@@ -2,6 +2,7 @@ import { myQuestions } from "./questions.js";
 
 let qcm = document.querySelector("#qcm");
 let rightAnswer = document.querySelector("#right_answer");
+let response = [];
 
 const createQcm = () => {
     myQuestions.forEach((element) => {
@@ -9,7 +10,7 @@ const createQcm = () => {
         createAnswer(element);
         createValidate(element);
     });
-    
+
 };
 
 const createTitle = (element) => {
@@ -23,6 +24,9 @@ const createAnswer = (element) => {
     let buttonAnswer = document.createElement("button");
     buttonAnswer.className = "answer";
     buttonAnswer.textContent = value;
+    buttonAnswer.addEventListener("click", (e)=>{
+        response.push(e.target.innerText);
+    })
     qcm.appendChild(buttonAnswer);
     });
 }
@@ -42,5 +46,5 @@ const displayResponse = (element) => {
     pResponse.textContent = element.correctAnswer;
     rightAnswer.appendChild(pResponse);
 }
-
+console.log(response);
 createQcm();
