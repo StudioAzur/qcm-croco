@@ -1,50 +1,78 @@
 import { myQuestions } from "./questions.js";
 
 let qcm = document.querySelector("#qcm");
-let rightAnswer = document.querySelector("#right_answer");
+let result = document.querySelector("#result");
+let domScore = document.querySelector("#score");
 let response = [];
+let count = 1;
+let score = 0;
 
 const createQcm = () => {
+    domScore.textContent = `${score} / ${myQuestions.length}`;
     myQuestions.forEach((element) => {
-        createTitle(element);
-        createAnswer(element);
-        createValidate(element);
+        for(number in element){
+        let idCard = createCard(element);
+        createTitle(element, idCard);
+        createAnswer(element, idCard, number);
+        createValidate(element, idCard);
+        console.log(number);
+        }
     });
-
 };
 
-const createTitle = (element) => {
+const createCard = (element) =>{
+    let div = document.createElement("div");
+    div.id = element.id;
+    div.className = "card__quizz";
+    qcm.appendChild(div);
+    let myId = element.id;
+    return myId;
+}
+
+const createTitle = (element, idCard) => {
     let h2 = document.createElement("h2");
     h2.textContent = element.question;
-    qcm.appendChild(h2);
+    document.getElementById(idCard).appendChild(h2);
 };
 
-const createAnswer = (element) => {
+const createAnswer = (element, idCard) => {
     element.answers.forEach(value => {
     let buttonAnswer = document.createElement("button");
     buttonAnswer.className = "answer";
     buttonAnswer.textContent = value;
+    buttonAnswer.id = count++;
     buttonAnswer.addEventListener("click", (e)=>{
-        response.push(e.target.innerText);
+        let choice = e.target.id;
+        highlight(choice);
     })
-    qcm.appendChild(buttonAnswer);
+    document.getElementById(idCard).appendChild(buttonAnswer);
     });
 }
 
-const createValidate = (element) => {
+const highlight = (choice) => {
+    let highlight = document.querySelectorAll(".highlight");
+    highlight.forEach((element) => {
+        element.classList.remove("highlight");
+    });
+    document.getElementById(choice).classList.add("highlight");
+}
+
+const createValidate = (element, idCard) => {
     let buttonValidate = document.createElement("button");
     buttonValidate.className = "validate";
     buttonValidate.textContent = "Valider la question";
-    buttonValidate.addEventListener("click", ()=>{
+    buttonValidate.addEventListener("click", (e)=>{
+        response.push(e.target.innerText);
+        buttonValidate.disabled = true;
         displayResponse(element);
     })
-    qcm.appendChild(buttonValidate);
+    document.getElementById(idCard).appendChild(buttonValidate);
 }
 
 const displayResponse = (element) => {
     let pResponse = document.createElement("p");
     pResponse.textContent = element.correctAnswer;
-    rightAnswer.appendChild(pResponse);
+    result.appendChild(pResponse);
 }
-console.log(response);
+
 createQcm();

@@ -6,11 +6,12 @@ main{
     align-content: center;
 }
 
-#response{
+#qcm{
     display: flex;
     flex-direction: column;
+    align-items: center ;
+    justify-content: center;
     justify-content: space-evenly;
-    width: 40em;
     row-gap: 1.5em;
     align-items: center;
 }
@@ -21,8 +22,10 @@ main{
     color: antiquewhite;
 }
 
-#qcm{
-    display: flex;
-    flex-direction: column;
-    row-gap: 1.5em;
+
+
+.highlight{
+    background-color: green;
+    color: white
 }
+
