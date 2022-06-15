@@ -1,39 +1,40 @@
 <!DOCTYPE html>
 <html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>QCM - Crocodiles</title>
+  </head>
 
-  <title>QCM - Crocodiles</title>
-</head>
-
-<body>
-  <main>
-    <h1>Questions à choix multiples sur les crocodiles</h1>
-    <div id="start">
-      <h2>Démarrer le quizz</h2>
-      <button id="quizz_start">Lancer le quizz</button>
-    </div>
-    <div id="quizz">
-      <div>Score du joueur : <span id="score"></span></div>
-      <section id="qcm">
-        <div id="response_container" data-qcm="0"></div>
-      </section>
-      <section id="result">
-        <h2>Résumé</h2>
-        <h3>Vos réponses :</h3>
-        <div id="your_response">
+  <body>
+    <main>
+      <h1>Questions à choix multiples sur les crocodiles</h1>
+      <div id="start">
+        <h2 id="startTitle">Démarrer le quizz</h2>
+        <div>
+          <img src="./assets/images/croco_start.png" alt="" id="crocoStart">
         </div>
-        <h3>Les bonnes réponses :</h3>
-        <div id="good_response">
-        </div>
-      </section>
-    </div>
-  </main>
-  <script src="./assets/js/game.js" type="module"></script>
-</body>
-
+        <button id="quizz_start">Lancer le quizz</button>
+      </div>
+      <div id="quizz">
+          <h2><span id="score"></span></h2>
+        <section id="qcm">
+          <div id="response_container" data-qcm="0"></div>
+          <img src="./assets/images/croco.png" alt="un crocodile tout mignon" />
+        </section>
+        <section id="result">
+          <h2>Résumé</h2>
+          <h3>Vos réponses :</h3>
+          <div id="your_response"></div>
+          <h3>Les bonnes réponses :</h3>
+          <div id="good_response"></div>
+          <button id="reload">Recommencer le quizz</button>
+        </section>
+      </div>
+    </main>
+    <script src="./assets/js/game.js" type="module"></script>
+  </body>
 </html>

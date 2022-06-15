@@ -10,6 +10,7 @@ export default class Game {
       goodResponse: document.querySelector("#good_response"),
       yourResponse: document.querySelector("#your_response"),
       responseContainer: document.querySelector("#response_container"),
+      reload: document.querySelector("#reload"),
       response: [],
       responseUser: [],
       count: 1,
@@ -34,7 +35,7 @@ export default class Game {
   createQcm = (myQcm, id) => {
     this.params.start.style.display = "none";
     this.params.result.style.display = "none";
-    this.params.quizz.style.display = "block";
+    this.params.quizz.style.display = "flex";
     myQcm[id].setActive(true);
     let idCard = this.dataQcm;
     this.displayQuestion(myQcm[id], idCard);
@@ -52,6 +53,7 @@ export default class Game {
     for (let index = 0; index < this.params.response.length; index++) {
       let p1 = document.createElement("p");
       p1.textContent = this.params.response[index];
+      p1.style.color = "green";
       this.params.goodResponse.appendChild(p1);
     }
   };
@@ -90,8 +92,6 @@ export default class Game {
     buttonAnswer.id = `${this.params.count++}`;
     buttonAnswer.addEventListener("click", (e) => {
       let choice = e.target.id;
-      let textValue = e.target.innerText;
-      this.params.responseUser.push(textValue);
       this.highlight(choice);
     });
     this.params.responseContainer.appendChild(buttonAnswer);
@@ -101,10 +101,15 @@ export default class Game {
     let buttonValidate = document.createElement("button");
     buttonValidate.className = "validate";
     buttonValidate.textContent = "Valider la question";
-    buttonValidate.addEventListener("click", (e) => {
-      this.params.response.push(e.target.innerText);
+    buttonValidate.addEventListener("click", () => {
       buttonValidate.disabled = true;
       element.active = true;
+      let responseUser = document.querySelector(".highlight").textContent;
+      this.params.responseUser.push(responseUser);
+
+      if (responseUser == element.correctAnswer) {
+        this.params.score++;
+      }
       this.nextQuestion(idCard);
     });
     this.params.responseContainer.appendChild(buttonValidate);
@@ -130,10 +135,13 @@ export default class Game {
   };
 
   gameOver = () => {
-    console.log("Game Over");
+    this.params.domScore.textContent = ` Score du Joueur : ${this.params.score} / ${myQcm.length}`;
     this.getMyResults();
     this.params.result.style.display = "block";
     this.params.qcm.style.display = "none";
+    this.params.reload.addEventListener("click", () => {
+      location.reload();
+    });
   };
 
   getMyResults = () => {
