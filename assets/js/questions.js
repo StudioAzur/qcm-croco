@@ -8,7 +8,7 @@ export const myQuestions = [
       c: "Le crocodile est un reptile.",
       d: "Le crocodile est un amphibien.",
     },
-    correctAnswer: "c",
+    correctAnswer: "",
     active: true,
   },
   {
@@ -20,7 +20,14 @@ export const myQuestions = [
       c: "Grâce à la couleur de leurs écailles",
       d: "Grâce à leurs pattes",
     },
-    correctAnswer: "b",
+    correctAnswer: "",
     active: true,
   },
 ];
+
+let response1 = myQuestions[0].answers.c;
+myQuestions[0].correctAnswer = response1;
+let response2 = myQuestions[1].answers.b;
+myQuestions[1].correctAnswer = response2;
+
+console.log(myQuestions);

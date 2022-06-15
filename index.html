@@ -12,9 +12,23 @@
   <body>
     <main>
       <h1>Questions à choix multiples sur les crocodiles</h1>
-      <div>Score du joueur <span id="score"></span></div>
-      <section id="qcm"></section>
-      <section id="result"></section>
+      <div id="start">
+        <h2>Démarrer le quizz</h2>
+        <button id="quizz_start">Lancer le quizz</button>
+      </div>
+      <div id="quizz">
+        <div>Score du joueur <span id="score"></span></div>
+        <section id="qcm"></section>
+        <section id="result">
+          <h2>Résumé</h2>
+          <div>
+            <h3>Vos réponses :</h3>
+          </div>
+          <div>
+            <h3>Les bonnes réponses :</h3>
+          </div>
+        </section>
+      </div>
     </main>
     <script src="./assets/js/index.js" type="module"></script>
   </body>
