@@ -7,6 +7,7 @@ let domScore = document.querySelector("#score");
 let quizz = document.querySelector("#quizz");
 let start = document.querySelector("#start");
 let response = [];
+let choiceUser = [];
 let currentQuestion = myQuestions[0];
 let count = 1;
 // Bonne réponses
@@ -71,7 +72,7 @@ const createAnswer = (element, idCard) => {
     });
     document.getElementById(idCard).appendChild(buttonAnswer);
   }
-  createValidate(element, idCard);
+  createValidate(element, idCard, choice);
 };
 
 const highlight = (choice) => {
@@ -82,12 +83,13 @@ const highlight = (choice) => {
   document.getElementById(choice).classList.add("highlight");
 };
 
-const createValidate = (element, idCard) => {
+const createValidate = (element, idCard, choice) => {
   let buttonValidate = document.createElement("button");
   buttonValidate.className = "validate";
   buttonValidate.textContent = "Valider la question";
   buttonValidate.addEventListener("click", (e) => {
     response.push(e.target.innerText);
+    choiceUser.push(choice);
     buttonValidate.disabled = true;
     displayResponse(element);
   });
