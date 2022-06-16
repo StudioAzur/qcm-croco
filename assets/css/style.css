@@ -77,17 +77,30 @@ body {
 #good_response{
   background-color: #15883e;
   color: #c8d8cd !important;
-  padding: 0.7em;
+  padding: 1em;
   border-radius: 5px;
-  text-transform: uppercase;
   margin-bottom: 10px;
+  width: 35%;
 }
 
 #your_response{
   background-color: #4d2d1f;
   color: #c7dfcf ;
-  padding: 0.7em;
+  padding: 1em;
   border-radius: 5px;
   margin-bottom: 10px;
+  width: 35%;
 }
 
+#croco_img{
+  border: 2px solid #c7dfcf ;
+}
+
+#result{
+  justify-content: space-around;
+}
+
+#crocomou{
+  width: 225px;
+  height: 225px;
+}

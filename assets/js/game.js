@@ -150,7 +150,7 @@ export default class Game {
   gameOver = () => {
     this.params.domScore.textContent = ` Score du Joueur : ${this.params.score} / ${myQcm.length}`;
     this.getMyResults();
-    this.params.result.style.display = "block";
+    this.params.result.style.display = "flex";
     this.params.qcm.style.display = "none";
     this.params.reload.addEventListener("click", () => {
       location.reload();
