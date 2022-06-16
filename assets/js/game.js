@@ -1,4 +1,5 @@
 import { myQcm } from "./questions.js";
+/* Création d'une classe appelée Game. */
 export default class Game {
   constructor() {
     this.params = {
@@ -21,6 +22,7 @@ export default class Game {
     this.init();
   }
 
+  /* Une fonction qui est appelée lorsque la page est chargée. */
   init = () => {
     window.addEventListener("load", () => {
       this.params.quizz.style.display = "none";
@@ -32,6 +34,7 @@ export default class Game {
     });
   };
 
+  /* Une fonction qui est appelée lorsque la page est chargée. */
   createQcm = (myQcm, id) => {
     this.params.start.style.display = "none";
     this.params.result.style.display = "none";
@@ -53,7 +56,6 @@ export default class Game {
     for (let index = 0; index < this.params.response.length; index++) {
       let p1 = document.createElement("p");
       p1.textContent = this.params.response[index];
-      p1.style.color = "green";
       this.params.goodResponse.appendChild(p1);
     }
   };
@@ -69,6 +71,7 @@ export default class Game {
     }
   };
 
+  /* Il crée un nouvel élément h2 et l'ajoute au DOM. */
   createElementAnswer = (element, idCard) => {
     let h2 = document.createElement("h2");
     h2.textContent = element.question;
@@ -76,6 +79,7 @@ export default class Game {
     this.createAnswer(element, idCard);
   };
 
+  /* Créer les réponses à la question. */
   createAnswer = (element, idCard) => {
     for (let index = 0; index < element.answers.length; index++) {
       let result = element.answers[index];
@@ -85,6 +89,7 @@ export default class Game {
     this.createValidate(element, idCard);
   };
 
+  /* Il crée un bouton pour chaque réponse. */
   buttonAnswer = (element) => {
     let buttonAnswer = document.createElement("button");
     buttonAnswer.className = "answer";
@@ -97,10 +102,12 @@ export default class Game {
     this.params.responseContainer.appendChild(buttonAnswer);
   };
 
+  /* Création d'un bouton qui validera la question. */
   createValidate = (element, idCard) => {
     let buttonValidate = document.createElement("button");
     buttonValidate.className = "validate";
     buttonValidate.textContent = "Valider la question";
+    buttonValidate.disabled = true;
     buttonValidate.addEventListener("click", () => {
       buttonValidate.disabled = true;
       element.active = true;
@@ -115,7 +122,9 @@ export default class Game {
     this.params.responseContainer.appendChild(buttonValidate);
   };
 
+  /* Mettre en surbrillance la réponse sélectionnée. */
   highlight = (choice) => {
+    document.querySelector(".validate").disabled = false;
     let highlight = document.querySelectorAll(".highlight");
     highlight.forEach((element) => {
       element.classList.remove("highlight");
@@ -123,6 +132,8 @@ export default class Game {
     document.getElementById(choice).classList.add("highlight");
   };
 
+  /* Vérifier si la longueur du tableau est égale à l'idCard. Si c'est le cas, il appelle la fonction
+  gameOver. Si ce n'est pas le cas, il incrémente l'idCard et appelle la fonction createQcm. */
   nextQuestion = (idCard) => {
     let lengthTabQcm = myQcm.length - 1;
     if (lengthTabQcm == idCard) {
@@ -134,6 +145,8 @@ export default class Game {
     }
   };
 
+  /* Une fonction qui est appelée lorsque le jeu est terminé. Il affiche le score du joueur et les
+  bonnes réponses. */
   gameOver = () => {
     this.params.domScore.textContent = ` Score du Joueur : ${this.params.score} / ${myQcm.length}`;
     this.getMyResults();
@@ -144,6 +157,7 @@ export default class Game {
     });
   };
 
+  /* Création d'un élément de paragraphe pour chaque élément du tableau responseUser. */
   getMyResults = () => {
     for (let index = 0; index < this.params.responseUser.length; index++) {
       let p2 = document.createElement("p");

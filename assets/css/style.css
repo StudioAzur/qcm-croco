@@ -28,7 +28,7 @@ body {
   color: white;
 }
 
-.answer, .validate, #quizz_start {
+.answer, .validate, #quizz_start, #reload{
   display: inline-block;
   outline: none;
   cursor: pointer;
@@ -55,7 +55,10 @@ body {
     margin-left: 60px;
 }
 
-#quizz_start:hover{
+.validate:disabled{
+  background-color: rgb(189, 177, 177);
+}
+#quizz_start:hover, #reload:hover{
     background: #1db954 !important;
 }
 
@@ -70,3 +73,21 @@ body {
 #startTitle{
     font-size: 32px;
 }
+
+#good_response{
+  background-color: #15883e;
+  color: #c8d8cd !important;
+  padding: 0.7em;
+  border-radius: 5px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+#your_response{
+  background-color: #4d2d1f;
+  color: #c7dfcf ;
+  padding: 0.7em;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
