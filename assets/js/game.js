@@ -98,6 +98,7 @@ export default class Game {
     buttonAnswer.id = `${this.params.count++}`;
     buttonAnswer.addEventListener("click", (e) => {
       let choice = e.target.id;
+      console.log(e.target.textContent);
       this.highlight(choice);
     });
     this.params.responseContainer.appendChild(buttonAnswer);

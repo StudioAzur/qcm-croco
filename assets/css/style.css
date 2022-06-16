@@ -98,6 +98,8 @@ body {
 
 #result{
   justify-content: space-around;
+  width: 600px;
+  flex-wrap: wrap;
 }
 
 #crocomou{
