@@ -12,6 +12,7 @@ export default class Game {
       yourResponse: document.querySelector("#your_response"),
       responseContainer: document.querySelector("#response_container"),
       reload: document.querySelector("#reload"),
+      fiesta: document.querySelector("#fiesta"),
       response: [],
       responseUser: [],
       count: 1,
@@ -149,6 +150,9 @@ export default class Game {
   bonnes réponses. */
   gameOver = () => {
     this.params.domScore.textContent = ` Score du Joueur : ${this.params.score} / ${myQcm.length}`;
+    if(this.params.score == myQcm.length){
+      this.params.fiesta.style.display = "block";
+    }
     this.getMyResults();
     this.params.result.style.display = "flex";
     this.params.qcm.style.display = "none";

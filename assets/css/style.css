@@ -104,3 +104,11 @@ body {
   width: 225px;
   height: 225px;
 }
+
+#fiesta{
+  width: 225px;
+  height: 225px;
+  margin-left: 30%;
+  padding: 0.5em;
+  display: none;
+}
